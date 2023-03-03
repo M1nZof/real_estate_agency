@@ -58,7 +58,7 @@ class Flat(models.Model):
         db_index=True)
 
     likes = models.ManyToManyField(User, related_name='liked_flats', null=True, blank=True)
-    owner_pure_phone = PhoneNumberField(null=True, blank=True)
+    owner_pure_phone = PhoneNumberField('Нормализованный номер владельца', null=True, blank=True)
 
     def __str__(self):
         return f'{self.town}, {self.address} ({self.price}р.)'
