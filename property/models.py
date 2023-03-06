@@ -92,7 +92,7 @@ class Owner(models.Model):
         related_name='flats_owners',
         related_query_name='flats_owner',
         verbose_name='Квартиры в собственности',
-        db_index=True
+        db_index=True,
     )
 
     def __str__(self):
