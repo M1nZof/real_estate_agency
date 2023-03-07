@@ -5,14 +5,14 @@ from django.db import migrations
 
 def add_default_numbers(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
-    for flat in Flat.objects.all():
+    flats = Flat.objects.all()
+    for flat in flats.iterator():
         parsed_phone = phonenumbers.parse(flat.owners_phonenumber, 'RU')
         if phonenumbers.is_valid_number(parsed_phone):
             flat.owner_pure_phone = phonenumbers.format_number(parsed_phone, phonenumbers.PhoneNumberFormat.E164)
         else:
             flat.owner_pure_phone = '+70000000000'
         flat.save()
-
 
 
 class Migration(migrations.Migration):
