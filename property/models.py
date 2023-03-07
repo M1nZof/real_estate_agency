@@ -50,7 +50,6 @@ class Flat(models.Model):
 
     new_building = models.BooleanField(
         'Новое здание?',
-        default=False,
         null=True,
         blank=True,
         db_index=True)
