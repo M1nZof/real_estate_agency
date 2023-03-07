@@ -64,14 +64,14 @@ class Grievance(models.Model):
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='user_grievances',
-        related_query_name='user_grievance'
+        related_name='grievances',
+        related_query_name='grievance'
     )
     flat = models.ForeignKey(
         Flat,
         on_delete=models.CASCADE,
-        related_name='flats_grievances',
-        related_query_name='flats_grievance',
+        related_name='grievances',
+        related_query_name='grievance',
     )
     text = models.TextField('Текст жалобы', null=True)
 
@@ -85,8 +85,8 @@ class Owner(models.Model):
     owner_pure_phone = PhoneNumberField('Нормализованный номер владельца', null=True, blank=True, db_index=True)
     flat = models.ManyToManyField(
         Flat,
-        related_name='flats_owners',
-        related_query_name='flats_owner',
+        related_name='owners',
+        related_query_name='owner',
         verbose_name='Квартиры в собственности',
         db_index=True,
     )
