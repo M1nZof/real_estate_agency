@@ -11,7 +11,7 @@ def add_default_numbers(apps, schema_editor):
         if phonenumbers.is_valid_number(parsed_phone):
             flat.owner_pure_phone = phonenumbers.format_number(parsed_phone, phonenumbers.PhoneNumberFormat.E164)
         else:
-            flat.owner_pure_phone = '+70000000000'
+            flat.owner_pure_phone = None
         flat.save()
 
 
