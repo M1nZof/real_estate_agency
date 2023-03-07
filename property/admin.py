@@ -8,6 +8,7 @@ from .models import Flat, Grievance, Owner
 #     raw_id_fields = ('owner', 'flat', )
 
 
+@admin.register(Flat)
 class FlatModelAdmin(admin.ModelAdmin):
     search_fields = ('town', 'address', 'owner')
     readonly_fields = ('created_at', )
@@ -20,10 +21,6 @@ class FlatModelAdmin(admin.ModelAdmin):
     # ]
 
 
+@admin.register(Grievance, Owner)
 class ModelAdmin(admin.ModelAdmin):
     raw_id_fields = ('flat', )
-
-
-admin.site.register(Flat, FlatModelAdmin)
-admin.site.register(Grievance, ModelAdmin)
-admin.site.register(Owner, ModelAdmin)
