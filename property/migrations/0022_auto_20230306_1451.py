@@ -4,12 +4,10 @@ from django.db import migrations, models
 import phonenumber_field.modelfields
 
 
-
 def load_linked_owners(apps, schema_editor):
     Owner = apps.get_model('property', 'Owner')
     Flat = apps.get_model('property', 'Flat')
     for owner in Owner.objects.all():
-        print(owner.pk)
         flat = Flat.objects.filter(owner=owner.owner)
         owner.flat.set(flat)
 
