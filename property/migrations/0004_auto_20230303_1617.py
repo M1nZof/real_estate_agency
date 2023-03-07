@@ -5,9 +5,8 @@ from django.db import migrations
 
 def set_default_value_no_to_new_building_field(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
-    for flat in Flat.objects.filter(construction_year__gte=2015):
-        flat.new_building = True
-        flat.save()
+    Flat.objects.filter(construction_year__gte=2015).update(new_building=True)
+    Flat.objects.filter(construction_year__lt=2015).update(new_building=False)
 
 
 class Migration(migrations.Migration):
