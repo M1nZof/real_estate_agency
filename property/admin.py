@@ -3,9 +3,9 @@ from django.contrib import admin
 from .models import Flat, Grievance, Owner
 
 
-# class FlatInline(admin.TabularInline):
-#     model = Flat.owner.through
-#     raw_id_fields = ('owner', 'flat', )
+class FlatInline(admin.TabularInline):
+    model = Flat.owners.through
+    raw_id_fields = ('owner', 'flat', )
 
 
 @admin.register(Flat)
@@ -16,9 +16,9 @@ class FlatModelAdmin(admin.ModelAdmin):
     list_editable = ('new_building', )
     list_filter = ('new_building', )
     raw_id_fields = ('likes', )
-    # inlines = [
-    #     FlatInline,
-    # ]
+    inlines = [
+        FlatInline,
+    ]
 
 
 @admin.register(Grievance, Owner)
